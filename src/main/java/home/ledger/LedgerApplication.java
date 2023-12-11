@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  - SpringBootConfiguration
  - ComprnentScan
  - EnableAutoConfiguration
+ 1회주행
  */
 @SpringBootApplication
 public class LedgerApplication {
