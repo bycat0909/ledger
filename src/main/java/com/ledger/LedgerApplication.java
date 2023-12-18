@@ -16,7 +16,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class LedgerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LedgerApplication.class, args);
-        System.out.println();
+     //SpringApplication.run(LedgerApplication.class, args);
+        SpringApplication app = new SpringApplication(LedgerApplication.class);
+        app.run(args);
     }
 }
