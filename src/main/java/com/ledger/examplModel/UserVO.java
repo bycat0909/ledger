@@ -8,7 +8,18 @@ package com.ledger.examplModel;
     SpringBoot, Security, OAuth
     CamelCase
 
+
+    프로젝트 구조
+    com.ledger
+        config  : 설정 Class가 만들어질 부분
+        main    : login, Vo 등 공통 부분이 들어갈 부분
+        admin   : 관리자 화면이 들어갈 부분
+        user    : 사용자 화면이 들어갈 부분
+            controller
+            service
+            serviceImpl
     사용자, 그룹별 전체 잔고가 관리되어야함.
+    
 
     사용자, 그룹별 수입과 지출이 관리되어야함
 
