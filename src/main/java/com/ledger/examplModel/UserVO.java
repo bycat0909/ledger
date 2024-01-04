@@ -43,7 +43,7 @@ package com.ledger.examplModel;
     통장VO(잔고)
         ->
 
-    공휴일VO
+    공휴일VO 고민중...
  */
 public class UserVO {
 
