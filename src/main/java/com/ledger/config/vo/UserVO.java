@@ -17,7 +17,9 @@ public class UserVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userNo;
-    @Column
+    @Column(nullable = false)
+    private String userId;
+    @Column(nullable = false)
     private String userEmail;
     @Column(nullable = false)
     private String userPassword;
@@ -31,9 +33,13 @@ public class UserVO {
     private String userGrade;
     @Column
     private String userUseYn;
-    //사용안함
     @Column
     private String userGroupId;
+    @Column
+    private String updateDt;
+    @Column
+    private String updateId;
+
 
     protected UserVO(){}
 
