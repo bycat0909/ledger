@@ -3,6 +3,7 @@ package com.ledger.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,24 +20,22 @@ import org.springframework.security.web.SecurityFilterChain;
  */
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig{
+public class WebSecurityConfig extends WebSecurityConfiguration {
 
     @Bean
     PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+       return new BCryptPasswordEncoder();
     }
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-        http
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+          http
             .authorizeHttpRequests((authorizeHttpRequests) ->
-                authorizeHttpRequests
-                    .requestMatchers("/**").hasRole("USER")
-            )
-            .formLogin(form -> form.loginPage("/login")
-                .permitAll()
+              authorizeHttpRequests
+                .requestMatchers("/**").hasRole("USER")
+        )
+        .formLogin(form -> form.loginPage("/login")
+           .permitAll()
         );
-
         return http.build();
     }
 }
