@@ -1,12 +1,13 @@
 package com.ledger;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
 import java.util.HashMap;
 
-@RestController
+@Controller
 public class FirstController {
     @GetMapping("/test")
     public Map<String, Object> test(){
@@ -24,5 +25,10 @@ public class FirstController {
     @GetMapping("/my")
     public String my(){
         return "my";
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "three";
     }
 }

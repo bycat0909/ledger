@@ -1,49 +1,6 @@
 package com.ledger.examplModel;
 
 /*
-    Ledger Project
-    사용자 테이블
-    DB : PostGresql
-    WEB, WAS : Apache, Tomcat
-    SpringBoot, Security, OAuth
-    CamelCase
-
-
-    프로젝트 구조
-    com.ledger
-        config  : 설정 Class가 만들어질 부분
-        main    : login, Vo 등 공통 부분이 들어갈 부분
-        admin   : 관리자 화면이 들어갈 부분
-        user    : 사용자 화면이 들어갈 부분
-            controller
-            service
-            serviceImpl
-    사용자, 그룹별 전체 잔고가 관리되어야함.
-    
-
-    사용자, 그룹별 수입과 지출이 관리되어야함
-
-    수입 :
-        통장
-    지출 :
-        현금
-        카드
-
-    사용자VO
-    그룹VO
-
-    결제VO(지출, 수입)
-    고정결제VO(고정지출, 고정수입)
-
-    할부VO
-
-    카드VO(지출정보, 결제일 관련)
-        -> 카드대금 결제일이 있어서 그 전까지 잔고에서 빼서 보여줌
-        -> 대금 결제일이 휴일이면 다음 영업일로 넘어감
-    통장VO(잔고)
-        ->
-
-    공휴일VO 고민중...
  */
 public class UserVO {
 
