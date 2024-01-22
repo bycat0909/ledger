@@ -1,6 +1,6 @@
-import Toolbar from "./compnent/toolbar/Toolbar"
 import Sidebar from "./compnent/sidebar/Sidebar"
 import Topbar from "./compnent/topbar/Topbar"
+import Home from "./pages/home/Home"
 import './App.css'
 
 function App(){
@@ -9,9 +9,7 @@ function App(){
             <Topbar/>
             <div className="container">
                 <Sidebar/>
-                <div className="others">
-                    other Pages
-                </div>
+                <Home/>
             </div>
         </div>
     )
