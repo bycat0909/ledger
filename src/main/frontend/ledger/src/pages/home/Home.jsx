@@ -1,6 +1,10 @@
 import React from 'react'
 import './Home.css'
-
+import Featuredinfo from "../../compnent/featuredinfo/Featuredinfo";
 export default function Home(){
-    return  <div className="home">home</div>
+    return (
+        <div className="home">
+            <Featuredinfo/>
+        </div>
+    )
 }
