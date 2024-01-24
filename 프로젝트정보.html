@@ -46,6 +46,27 @@ serviceImpl
 공휴일VO 고민중...
 
 -- 요기까지 진행함
-https://citylock77.tistory.com/132 Arrow 이미지부터 하면 됨
+https://citylock77.tistory.com/132     margin-top: 10px; 부터함
 https://mui.com/material-ui/getting-started/installation/
 아이콘 추가하는 부분
+
+-- 박스 쉐도우 쉽게 만들기
+https://html-css-js.com/css/generator/box-shadow/
+
+-- For문 컴포넌트 생성
+function App() {
+const weekArr = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
+const rendering = () => {
+const result = [];
+for (let i = 0; i < weekArr.length; i++) {
+result.push(<span key={i}>{weekArr[i] + " / "}</span>);
+}
+return result;
+};
+
+return <div>{rendering()}</div>;
+}
+
+
+
