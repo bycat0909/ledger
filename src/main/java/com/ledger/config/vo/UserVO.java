@@ -16,78 +16,67 @@ public class UserVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="user_no", nullable = false)
     private Integer userNo;
+    @Column(name ="user_email", nullable = false)
+    private String email;
     @Column(nullable = false)
-    private String userId;
+    private String password;
     @Column(nullable = false)
-    private String userEmail;
+    private String nickName;
+    @Column
+    private String profile;
     @Column(nullable = false)
-    private String userPassword;
+    private String inputDt;
     @Column
-    private String userNickName;
+    private String grade;
     @Column
-    private String userProfile;
-    @Column
-    private String userJoinDt;
-    @Column
-    private String userGrade;
-    @Column
-    private String userUseYn;
-    @Column
-    private String userGroupId;
-    @Column
-    private String updateDt;
-    @Column
-    private String updateId;
-
+    private String useYn;
 
     protected UserVO(){}
 
     @Builder
     public UserVO(
-            String userEmail
+            String email
     ) {
-        this.userEmail = userEmail;
+        this.email = email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail =userEmail;
+    public void setUserEmail(String email) {
+        this.email =email;
     }
     @Builder
     public UserVO(
             Integer userNo
-            , String userEmail
-            , String userPassword
-            , String userNickName
-            , String userProfile
-            , String userJoinDt
-            , String userGrade
-            , String userUseYn
-            , String userGroupId
+            , String email
+            , String password
+            , String nickName
+            , String profile
+            , String inputDt
+            , String grade
+            , String useYn
     ) {
         this.userNo = userNo;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-        this.userNickName = userNickName;
-        this.userProfile = userProfile;
-        this.userJoinDt = userJoinDt;
-        this.userGrade = userGrade;
-        this.userUseYn = userUseYn;
-        this.userGroupId = userGroupId;
+        this.email = email;
+        this.password = password;
+        this.nickName = nickName;
+        this.profile = profile;
+        this.inputDt = inputDt;
+        this.grade = grade;
+        this.useYn = useYn;
     }
 
     @Override
     public String toString() {
         return "UserVO{" +
                 "userNo=" + userNo +
-                ", userEmail='" + userEmail + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userNickName='" + userNickName + '\'' +
-                ", userProfile='" + userProfile + '\'' +
-                ", userJoinDt='" + userJoinDt + '\'' +
-                ", userGrade='" + userGrade + '\'' +
-                ", userUseYn='" + userUseYn + '\'' +
-                ", userGroupId='" + userGroupId + '\'' +
+                ", userEmail='" + email + '\'' +
+                ", userPassword='" + password + '\'' +
+                ", userNickName='" + nickName + '\'' +
+                ", userProfile='" + profile + '\'' +
+                ", userJoinDt='" + inputDt + '\'' +
+                ", userGrade='" + grade + '\'' +
+                ", userUseYn='" + useYn + '\'' +
                 '}';
     }
 }

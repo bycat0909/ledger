@@ -12,9 +12,13 @@ Ledger Project
 프로젝트 구조
 com.ledger
 config  : 설정 Class가 만들어질 부분
-main    : login, Vo 등 공통 부분이 들어갈 부분
+    security : 시큐리티 설정이 들어감
+    vo       : vo들이 들어감
+main    : login, 회원가입 등 메인화면, 로그인화면에서 이뤄지는 기능이 들어갈 부분
+api     : JPA관련 모듈이 들어갈 부분
 admin   : 관리자 화면이 들어갈 부분
 user    : 사용자 화면이 들어갈 부분
+    auth : 인
 controller
 service
 serviceImpl
