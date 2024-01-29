@@ -62,9 +62,10 @@ serviceImpl
 공휴일VO 고민중...
 
 -- 요기까지 진행함
-https://citylock77.tistory.com/132     margin-top: 10px; 부터함
-https://mui.com/material-ui/getting-started/installation/
+https://citylock77.tistory.com/135
 아이콘 추가하는 부분
+https://mui.com/material-ui/getting-started/installation/
+
 
 -- 박스 쉐도우 쉽게 만들기
 https://html-css-js.com/css/generator/box-shadow/
@@ -85,4 +86,8 @@ return <div>{rendering()}</div>;
 }
 
 
+React는 서버에서 인증정보를 recoil이나 redux로 관리해서 없으면 메인화면으로 보내면 됨
+-https://5xjin.github.io/blog/react_jwt_router/
 
+
+npm install react-router-dom
