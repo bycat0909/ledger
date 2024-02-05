@@ -25,7 +25,7 @@ export default function Topbar(){
                     <div className="topbarIconContainer">
                         <SettingsIcon/>
                     </div>
-                    <img src="https://i.namu.wiki/i/AnluHKfNM2R27ULCDt9ha1LqgI5gs98FzkU6C4K-x0ujxhmedmM6_3HmUeLmMLeYS1_S8GNQxle-tffmR-Z2P_g_qd6XL7E2iG4Vl-J9nonVo5BUP-medGFuNu0W7dEip9dV_i0UgCDDZ8smX26qcQ.webp"
+                    <img src="https://i.namu.wiki/i/HJ3xgUeiMGIHuGwYEUTiktHGi7kx60RxZT-k0ocNeDC41Kd7cE2Wx-4hdrwQNc6yGcUA73CAhRrgSI3aNwoI44rMZweNic-twoAtKlUfjtH4QSdqZe2pboBqjHg5tcM6bXxcmJLVtRwhh64eoocXnQ.webp"
                          alt=""
                          className="topAvatar"
                     />
