@@ -5,20 +5,27 @@ import {DataGrid} from "@mui/x-data-grid";
 
 const columns =[
     {field : 'id', headerName : 'ID', width : 70},
-    {field : 'firstName', headerName : 'First Name', width : 130},
-    {field : 'lastName', headerName : 'Last Name', width : 130},
-    {field : 'age', headerName : 'Age', type: 'number', width : 90},
-    {field : 'fullName', headerName : 'Full Name', description:'설명', sortable:false ,width : 160},
+    {field : 'username', headerName : 'UserName', width : 130},
+    {field : 'email', headerName : 'Email', width : 130},
+    {field : 'status', headerName : 'Status', width : 90},
+    {field : 'transaction', headerName : 'Transaction', description:'설명', sortable:false ,width : 160},
 ]
 
 const rows =[
-    {id:1, lastName:'Snow', firstName:'jon', age : 35},
-    {id:1, lastName:'Lannister', firstName:'Cersei', age : 35},
-    {id:1, lastName:'Lannister', firstName:'Jaime', age : 35},
-    {id:1, lastName:'Stark', firstName:null, age : 35},
-    {id:1, lastName:'Targaryen', firstName:'Ferrara', age : 35},
-    {id:1, lastName:'Frances', firstName:'Rossini', age : 35},
-    {id:1, lastName:'Roxie', firstName:'Harvey', age : 35},
+    {id:1, username:'Snow', email:'Snow@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:2, username:'Kevin', email:'Kevin@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:3, username:'Lucy', email:'Lucy@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:4, username:'Jaime', email:'Jaime@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:5, username:'Brian', email:'Brian@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:6, username:'Jhon', email:'Jhon@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:7, username:'Cersei', email:'Cersei@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:8, username:'Snow', email:'Snow@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:9, username:'Kevin', email:'Kevin@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:10, username:'Lucy', email:'Lucy@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:11, username:'Jaime', email:'Jaime@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:12, username:'Brian', email:'Brian@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:13, username:'Jhon', email:'Jhon@gmail.com', status : 'active', transaction : '$120.00'},
+    {id:14, username:'Cersei', email:'Cersei@gmail.com', status : 'active', transaction : '$120.00'},
 ]
 export default function UserList(){
     return (
@@ -27,7 +34,7 @@ export default function UserList(){
                 columns={columns}
                 rows={rows}
                 pageSize={5}
-                rowsPerPageOptions={[5]}
+                rowsPerPage={5}
                 checkboxSelection
             />
         </div>
