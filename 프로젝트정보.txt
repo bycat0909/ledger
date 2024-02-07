@@ -63,7 +63,9 @@ serviceImpl
 
 -- 요기까지 진행함
 https://citylock77.tistory.com/135
-http://localhost:3000/users 확인하는부분까지함
+-http://localhost:3000/users 확인하는부분까지함
+-이미지 사이즈 조정하는 부분부터 하면 됨
+
 아이콘 추가하는 부분
 https://mui.com/material-ui/getting-started/installation/
 
