@@ -95,3 +95,5 @@ React는 서버에서 인증정보를 recoil이나 redux로 관리해서 없으�
 axios, cra사용하기
 
 npm install react-router-dom
+
+--- 로컬 SVN 설치 APR부터 막혔습니다...
