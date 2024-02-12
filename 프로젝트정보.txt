@@ -96,6 +96,7 @@ axios, cra사용하기
 
 npm install react-router-dom
 
+https://coding-chobo.tistory.com/66 참고해서 진행중
 --- 로컬 SVN 설치 APR부터 막혔습니다...
 --- svnadmin: error while loading shared libraries: libsvn_fs_fs-1.so.0: cannot open shared object file: No such file or directory
 -- ldd `which 라이브러리명`
@@ -103,3 +104,15 @@ npm install react-router-dom
 -- export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH 라이브러리 경로 추가
 -- SVN 저장소 생성
 svnadmin create /home/repository
+
+--방화벽 해제
+iptables -I INPUT -p tcp --dport 3690 -j ACCEPT
+svnserve -d -r /home/repository
+172.22.47.1
+hostname -I로 IP확인
+chmod -R 764 /home/repository/* 로 폴더 권한주기
+
+
+# SVN_EDITOR=/usr/bin/vim
+# export SVN_EDITOR 여기부터해야함
+export SVN_EDITOR=/usr/bin/vi로 에디터 설정해줘야함
