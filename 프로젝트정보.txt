@@ -63,8 +63,7 @@ serviceImpl
 로컬로 옮김
 -- 요기까지 진행함
 https://citylock77.tistory.com/135
--http://localhost:3000/users 확인하는부분까지함
--이미지 사이즈 조정하는 부분부터 하면 됨
+userList.jsx 에 있는 데이터를 코드와 분리하기 위해서 dummyData.js 로 옮겨준다. 부터 하면 됨
 
 아이콘 추가하는 부분
 https://mui.com/material-ui/getting-started/installation/
@@ -96,6 +95,8 @@ axios, cra사용하기
 
 npm install react-router-dom
 
+
+--- SVN 설치하는 방법
 https://coding-chobo.tistory.com/66 참고해서 진행중
 --- 로컬 SVN 설치 APR부터 막혔습니다...
 --- svnadmin: error while loading shared libraries: libsvn_fs_fs-1.so.0: cannot open shared object file: No such file or directory
@@ -111,7 +112,6 @@ svnserve -d -r /home/repository
 172.22.47.1
 hostname -I로 IP확인
 chmod -R 764 /home/repository/* 로 폴더 권한주기
-
 
 # SVN_EDITOR=/usr/bin/vim
 # export SVN_EDITOR 여기부터해야함
