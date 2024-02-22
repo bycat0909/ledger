@@ -63,6 +63,7 @@ serviceImpl
 로컬로 옮김
 -- 요기까지 진행함
 https://citylock77.tistory.com/136
+top / bottom 영역으로 구분하고, top 에서는 이미지, username 및 title 을 보여준다.  까지 진행함
 
 
 
