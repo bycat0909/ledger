@@ -62,6 +62,32 @@
     font-weight: 600;
 }
 
-.userSHowUserTitle{
-    font-weight: 300;s
+.userShowUserTitle{
+    font-weight: 300;
 }
+
+.userShowBottom{
+    margin-top: 20px;
+}
+
+.userShowTitle{
+    font-size: 14px;
+    font-weight: 600;
+    color : rgb(179, 175, 175)
+}
+
+.userShowInfo{
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+    color : rgb(97, 96, 96)
+}
+
+.userShowIcon{
+    font-size: 16px !important;
+}
+
+.userShowInfoTitle{
+    margin-left: 10px;
+}
+
