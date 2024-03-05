@@ -1,13 +1,16 @@
 import React from "react";
 import './User.css'
-import {CalendarToday, LocationOn, MailOutline, PermIdentity, PhoneIphone} from "@mui/icons-material";
+import {CalendarToday, LocationOn, MailOutline, PermIdentity, PhoneIphone, Publish} from "@mui/icons-material";
+import {Link} from "react-router-dom";
 
 export default function User(){
     return (
         <div className="user">
             <div className="userTitleContainer">
                 <h1 className="userTitle">Edit User</h1>
-                <button className="userAddButton">Create</button>
+                <Link to="/newUser">
+                    <button className="userAddButton">Create</button>
+                </Link>
             </div>
             <div className="userContainer">
                 <div className="userShow">
@@ -28,7 +31,7 @@ export default function User(){
                             <PermIdentity className ="userShowIcon"/>
                             <span className ="userShowIconTitle">hani99</span>
                         </div>
-
+                        <span className="userShowTitle">Contact Detail</span>
                         <div className="userShowInfo">
                             <CalendarToday className ="userShowIcon"/>
                             <span className ="userShowIconTitle">25.12.2000</span>
@@ -50,7 +53,72 @@ export default function User(){
                         </div>
                     </div>
                 </div>
-                <div className="userUpdate">update</div>
+                <div className="userUpdate">
+                    <span className ="userUpdateTitle">
+                    <form className ="userUpdateForm">
+                        <div className="userUpdateLeft">
+                            <div className="userUpdateItem">
+                                <label>Username</label>
+                                <input
+                                    type="text"
+                                    placeholder="hani99"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Full Name</label>
+                                <input
+                                    type="text"
+                                    placeholder="Arsham Haghani"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Email</label>
+                                <input
+                                    type="text"
+                                    placeholder="hani@gmail.com"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Phone</label>
+                                <input
+                                    type="text"
+                                    placeholder="+61 123 345 123"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Address</label>
+                                <input
+                                    type="text"
+                                    placeholder="Sydney | Australia"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                        </div>
+                        <div className="userUpdateRight">
+                            <div className="userUpdateUpload">
+                                <img
+                                    src="/img/img.jpg"
+                                    alt=""
+                                    className="userUpdateImg"
+                                />
+                                <label htmlFor="file">
+                                    <Publish className="userUpdateIcon"/>
+                                </label>
+                                <input
+                                    type="file"
+                                    id="file"
+                                    style={{display:'none'}}
+                                />
+                            </div>
+                            <button className="userUpdateButton">Update</button>
+                        </div>
+                    </form>
+                    </span>
+                </div>
             </div>
         </div>
     )
