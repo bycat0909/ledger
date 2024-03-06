@@ -13,16 +13,17 @@ public class FirstController {
     public Map<String, Object> test(){
         Map<String, Object> returnData = new HashMap<>();
 
-        returnData.put("test", "data");
+        returnData.put("test11", "data11");
         return returnData;
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/helloo")
     public String hello(){
+        System.out.println("Testttt");
         return "hello";
     }
 
-    @GetMapping("/my")
+    @GetMapping("/myy")
     public String my(){
         return "my";
     }
