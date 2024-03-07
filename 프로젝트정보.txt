@@ -121,4 +121,6 @@ chmod -R 764 /home/repository/* 로 폴더 권한주기
 export SVN_EDITOR=/usr/bin/vi로 에디터 설정해줘야함
 
 
-Test
+--20240307 설치
+npm install http-proxy-middleware --save
+ npm install axios --save

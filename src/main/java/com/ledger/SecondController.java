@@ -14,4 +14,9 @@ public class SecondController {
     public String test() {
         return "Hello, world!";
     }
+
+    @GetMapping("/api/test")
+    public String hello() {
+        return "테스트입니다.";
+    }
 }

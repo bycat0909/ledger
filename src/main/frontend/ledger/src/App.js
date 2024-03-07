@@ -7,10 +7,23 @@ import User from "./pages/user/User"
 import NewUser from "./pages/newUser/NewUser"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
+import axios from "axios"
+import {useEffect, useState} from "react";
 function App(){
+    const [hello, setHello] = useState('');
+    useEffect(() => {
+        axios.get('/api/test')
+            .then((res) => {
+                setHello(res.data);
+            })
+    }, []);
+
     return(
         <Router>
             <Topbar/>
+            <div className="App">
+                백엔드 데이터 : {hello}
+            </div>
             <div className="container">
                 <Sidebar/>
                 <Routes>
