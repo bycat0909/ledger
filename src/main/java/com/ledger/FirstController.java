@@ -3,6 +3,7 @@ package com.ledger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -17,19 +18,32 @@ public class FirstController {
         return returnData;
     }
 
-    @GetMapping("/helloo")
-    public String hello(){
-        System.out.println("Testttt");
-        return "hello";
+    @GetMapping("/user")
+    public String user(){
+        System.out.println("Test");
+        return "userPage";
+    }
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
+    @GetMapping("/manager")
+    public String manager(){
+        return "manager";
     }
 
-    @GetMapping("/myy")
-    public String my(){
-        return "my";
-    }
-
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login(){
-        return "three";
+        return "login";
+    }
+
+    @GetMapping("/join")
+    public String join(){
+        return "join";
+    }
+
+    @GetMapping("/joinProc")
+    public @ResponseBody String joinProc(){
+        return "회원가입성공";
     }
 }

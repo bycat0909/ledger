@@ -7,6 +7,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -20,21 +21,25 @@ import org.springframework.security.web.SecurityFilterChain;
     https://coding-factory.tistory.com/265#google_vignette
  */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity //스프링 시큐리티 필터체인 등록
 public class WebSecurityConfig extends WebSecurityConfiguration {
-    @Bean
+    //  @Bean
     PasswordEncoder passwordEncoder(){
-       return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
-    @Bean
+    //@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-            .authorizeHttpRequests((authorizeHttpRequests) ->
-                //authorizeHttpRequests.requestMatchers("/**").hasRole("USER")
-                authorizeHttpRequests.requestMatchers("/**").permitAll()
-            )
-            .formLogin(form -> form.loginPage("/login").permitAll())
-            .httpBasic(Customizer.withDefaults());
+            .httpBasic().disable()
+            .csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+            .and()
+                .authorizeHttpRequests((authorize) -> authorize
+                        .anyRequest().authenticated()
+                )
+                .httpBasic(Customizer.withDefaults())
+                .formLogin(Customizer.withDefaults());
 
         return http.build();
     }
