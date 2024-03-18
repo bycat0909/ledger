@@ -91,7 +91,7 @@ return <div>{rendering()}</div>;
 }
 
 
-React는 서버에서 인증정보를 recoil이나 redux로 관리해서 없으면 메인화면으로 보내면 됨
+React는 서버에서 인증정보를 recoil이나 redux로 관리해서 없으면 메인화면으로 보내면 됨t
 -https://5xjin.github.io/blog/react_jwt_router/
 
 axios, cra사용하기
