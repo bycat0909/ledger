@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -57,9 +58,13 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
 
     public UserDetailsService userDetailsService(){
         //https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html 읽고 시큐리티 분석중..
-        UserBuilder users = User.withDefaultPasswordEncoder();
+        UserDetails users = User.withDefaultPasswordEncoder()
+                .username("username")
+                .password("password")
+                .roles("USER")
+                .build();
 
-        return new InMemoryUserDetailsManager(u)
+        return new InMemoryUserDetailsManager(users);
     }
 }
 
