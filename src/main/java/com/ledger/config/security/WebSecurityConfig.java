@@ -10,6 +10,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,27 +38,33 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
     //@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-            .httpBasic().disable()
-            .csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
-            .and()
-                .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
-                )
-                .httpBasic(Customizer.withDefaults())
-                .formLogin((formLogin ->
-                        formLogin
-                                .usernameParameter("username")
-                                .passwordParameter("password")
-                                .defaultSuccessUrl("/", true)
-                        )
-                );
+            //.httpBasic().disable()
+            .csrf(AbstractHttpConfigurer::disable)
+            //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .authorizeHttpRequests((authorize) -> authorize
+                    .anyRequest().authenticated()
+            )
+            .httpBasic(Customizer.withDefaults())
+            .formLogin((formLogin ->
+                    formLogin
+                        /*
+                        .loginPage("") 로그인 페이지 등록
+                        .permitAll() 로그인 페이지는 전체 통과
+                         */
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/", true)
+                    )
+            )
+            .logout((logout)->logout.permitAll());
         return http.build();
     }
 
     public UserDetailsService userDetailsService(){
-        //https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html 읽고 시큐리티 분석중..
+        /*
+            https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html 읽고 시큐리티 분석중..
+            https://catsbi.oopy.io/c0a4f395-24b2-44e5-8eeb-275d19e2a536
+         */
         UserDetails users = User.withDefaultPasswordEncoder()
                 .username("username")
                 .password("password")
