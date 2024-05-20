@@ -4,17 +4,17 @@ package com.ledger.config.security;
 
 
 
+import com.ledger.config.security.service.CustomUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -35,12 +35,22 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity //스프링 시큐리티 필터체인 등록
 public class WebSecurityConfig extends WebSecurityConfiguration {
 
-    /*@Bean
+    @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-     */
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails userDetails = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("password")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(userDetails);
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
@@ -65,7 +75,6 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
             .logout((logout)->logout.permitAll());
         return http.build();
     }
-
    /*
         https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html 읽고 시큐리티 분석중..
         https://catsbi.oopy.io/c0a4f395-24b2-44e5-8eeb-275d19e2a536
@@ -87,10 +96,14 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
         - 해당 필터를 커스텀해서 Return 하면 됨
 
      */
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+   @Bean
+   public AuthenticationManager authenticationManager(CustomUserDetailService userDetailsService, PasswordEncoder passwordEncoder) {
+       DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+       authenticationProvider.setUserDetailsService(userDetailsService);
+       authenticationProvider.setPasswordEncoder(passwordEncoder);
+
+       return new ProviderManager(authenticationProvider);
+   }
 
 }
 
