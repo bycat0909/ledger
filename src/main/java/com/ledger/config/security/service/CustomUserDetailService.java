@@ -1,6 +1,8 @@
 package com.ledger.config.security.service;
 
 import com.ledger.config.vo.UserVO;
+import com.ledger.main.user.repo.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -19,23 +21,32 @@ import java.util.Collection;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("Test  : " + username);
 
+        UserVO user = userRepository.findByEmail(username);
         /*
             UserDetails를 상속받은 UserVo를 Return하면 됨
             UserDetailsService를 implements받은 CustomUserDetailServiceimpl의
             loadUserByUsername 에서 사용자를 조회해서 리턴하면 됨.
             Test
          */
+        if(user == null){
+            throw new UsernameNotFoundException(username);
+        }
 
+        System.out.println("==============");
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
+        System.out.println("==============");
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         return User.builder()
-                .username(username)
-                .password(encoder.encode("1234"))
+                .username(user.getEmail())
+                .password(encoder.encode(user.getPassword()))
                 .roles("USER")
                 .build();
     }

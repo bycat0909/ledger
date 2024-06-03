@@ -58,6 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
             .csrf(AbstractHttpConfigurer::disable)
             //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .authorizeHttpRequests((authorize) -> authorize
+                    .requestMatchers("/").permitAll()
                     .anyRequest().authenticated()
             )
             .httpBasic(Customizer.withDefaults())
@@ -67,12 +68,15 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
                         .loginPage("") 로그인 페이지 등록
                         .permitAll() 로그인 페이지는 전체 통과
                          */
+                        //.loginPage("/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/", true)
                     )
+
             )
-            .logout((logout)->logout.permitAll());
+            .logout((logout)->logout.permitAll())
+            .requestCache(requestCache -> requestCache.disable()); // requestCache 비활성화
         return http.build();
     }
    /*
