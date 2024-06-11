@@ -1,9 +1,5 @@
 package com.ledger.config.security;
-
-
-
-
-
+import com.ledger.config.security.service.CustomSuccessHandler;
 import com.ledger.config.security.service.CustomUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
     public UserDetailsService userDetailsService() {
         UserDetails userDetails = User.withDefaultPasswordEncoder()
                 .username("user")
-                .password("password")
+                .password(passwordEncoder().encode("password"))
                 .roles("USER")
                 .build();
 
@@ -69,10 +65,11 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
                         .permitAll() 로그인 페이지는 전체 통과
                          */
                         //.loginPage("/login")
+                        .successHandler(new CustomSuccessHandler())
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/", true)
                     )
+
 
             )
             .logout((logout)->logout.permitAll())

@@ -24,7 +24,7 @@ public class FirstController {
         return "userPage";
     }
     @GetMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin";
     }
     @GetMapping("/manager")
