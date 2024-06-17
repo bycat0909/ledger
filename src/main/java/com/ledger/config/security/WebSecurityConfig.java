@@ -64,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
                         .loginPage("") 로그인 페이지 등록
                         .permitAll() 로그인 페이지는 전체 통과
                          */
-                        //.loginPage("/login")
+                        .loginPage("/login")
                         .successHandler(new CustomSuccessHandler())
                         .usernameParameter("username")
                         .passwordParameter("password")

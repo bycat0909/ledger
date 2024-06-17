@@ -1,9 +1,0 @@
-.container{
-  display: flex;
-}
-
-.frame_full{
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-}
