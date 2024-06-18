@@ -3,122 +3,22 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-interface SignupFormValues {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  nickname: string;
-  photo: File | null;
-}
+//import AcmeLogo from '@/app/ui/acme-logo';
+//import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const Page: React.FC = () => {
-  const [emailVerified, setEmailVerified] = useState(false);
-
-  const formik = useFormik<SignupFormValues>({
-    initialValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      nickname: '',
-      photo: null,
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email address').required('Required'),
-      password: Yup.string().min(8, 'Password must be at least 8 characters').required('Required'),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Required'),
-      nickname: Yup.string(),
-      photo: Yup.mixed().nullable(),
-    }),
-    onSubmit: (values) => {
-      console.log('Form values:', values);
-    },
-  });
-
-  const handleEmailVerification = () => {
-    // 여기서 이메일 인증 로직을 추가하세요.
-    // 예: 이메일 인증 API 호출
-    setEmailVerified(true);
-  };
 
   return (
-    <div>
-      <h1>Signup</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          <button type="button" onClick={handleEmailVerification}>Verify Email</button>
-          {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
-          {emailVerified && <div>Email Verified!</div>}
-        </div>
-
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
-        </div>
-
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmPassword}
-          />
-          {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
-        </div>
-
-        <div>
-          <label htmlFor="nickname">Nickname</label>
-          <input
-            id="nickname"
-            name="nickname"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.nickname}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="photo">Photo</label>
-          <input
-            id="photo"
-            name="photo"
-            type="file"
-            onChange={(event) => {
-              formik.setFieldValue('photo', event.currentTarget.files[0]);
-            }}
-            onBlur={formik.handleBlur}
-          />
-        </div>
-
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+    
+    <main className="flex min-h-screen flex-col p-6">
+      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
+      </div>
+      <div className="h-0 w-0 border-b-[30px] border-l-[20px] border-r-[20px] border-b-black border-l-transparent border-r-transparent"/>
+      <Link href="/pages/auth/login" className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700" legacyBehavior>
+        Go to Login
+      </Link>
+    </main>
   );
 };
-
 export default Page;
