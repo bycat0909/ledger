@@ -2,6 +2,7 @@ package com.ledger;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,9 +33,10 @@ public class FirstController {
         return "manager";
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public String login(){
-        return "login";
+        System.out.println("로그인요청 테스트");
+        return "test";
     }
 
     @GetMapping("/join")

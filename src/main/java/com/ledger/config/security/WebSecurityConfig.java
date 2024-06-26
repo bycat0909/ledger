@@ -18,6 +18,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 /*
     스프링 시큐리티 참고
@@ -54,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
             .csrf(AbstractHttpConfigurer::disable)
             //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .authorizeHttpRequests((authorize) -> authorize
-                    .requestMatchers("/").permitAll()
+                    .requestMatchers("/", "/login").permitAll()
                     .anyRequest().authenticated()
             )
             .httpBasic(Customizer.withDefaults())
@@ -106,6 +110,17 @@ public class WebSecurityConfig extends WebSecurityConfiguration {
        return new ProviderManager(authenticationProvider);
    }
 
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("http://localhost:3000");  // 클라이언트 도메인을 여기에 추가
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+    }
 }
 
 
